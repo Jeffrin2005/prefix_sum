@@ -1,20 +1,12 @@
-
-
 class Solution {
 public:
-    int pivotInteger(int n) {
-        int totalSum = n * (n + 1) / 2;
-       vector<int> prefixSum(n+1, 0);
-        prefixSum[0] = 0;
-        for (int i = 1; i <= n; ++i){
-            prefixSum[i] = prefixSum[i - 1] + i;
+    int largestAltitude(vector<int>& gain) {
+        int n = gain.size();
+        vector<int>pref(n+1,0);
+        pref[0] = gain[0];
+        for(int i = 1; i < n; i++){
+            pref[i] = pref[i-1] + gain[i];
         }
-        for (int x = 1; x <= n; ++x) {
-            int suffixSum = totalSum - prefixSum[x - 1];
-            if (prefixSum[x] == suffixSum){
-                return x;
-            }
-        }
-        return -1;
+        return *max_element(pref.begin(), pref.end());
     }
 };
