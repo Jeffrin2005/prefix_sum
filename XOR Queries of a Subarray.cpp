@@ -1,4 +1,4 @@
-
+// time comp = o(n+q) , space comp = o(n)
 
 class Solution {
 public:
